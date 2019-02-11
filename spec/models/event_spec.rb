@@ -6,10 +6,6 @@ RSpec.describe Event, type: :model do
     @event = FactoryBot.build(:event)
   end
 
-  it "has a valid factory" do
-    expect(build(:event)).to be_valid
-  end
-
   context "validation" do
 
     it "is valid with valid attributes" do
