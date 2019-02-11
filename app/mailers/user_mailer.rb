@@ -11,4 +11,13 @@ class UserMailer < ApplicationMailer
     # c'est cet appel à mail() qui permet d'envoyer l’e-mail en définissant destinataire et sujet.
     mail(to: @user.email, subject: "Merci d'avoir choisi Le Choix dans la Date !")
   end
+
+  def join_email(attendance)
+
+  	@attendance = attendance
+
+  	@url = "https://fr.wikipedia.org/wiki/Contrepeterie"
+
+  	mail(to: @attendance.event.admin.email, subject: "Un nouvel utilisateur participe à votre évènement !")
+  end
 end
