@@ -4,13 +4,19 @@
     <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
   </head>
   <body>
-    <h1>Salut <%= @attendance.event.admin.first_name %> et bienvenue chez nous !</h1>
+    <h1>Salut à toi très cher <strong style="color: red"><%= @attendance.event.admin.first_name %></strong>!<br/> Nous avons une très bonne nouvelle à t'annoncer !  </h1>
+    <hr/>
     <p>
-      Tu t'es inscrit sur le-choix-dans-la-date.org en utilisant l'e-mail suivant : <%= @attendance.event.admin.email %>.
+      L'utilisateur <strong><%= @attendance.attendee.first_name %></strong> vient de s'inscrire à ton évènement : <span style="font-style: italic; color: red">"Grosse orgie bien sale à la forêt jolie pour fêter le retour de Schtrudël"</span> !
     </p>
+      <br/><img src="https://peepoodo.github.io/peepoodo-box/avatars/strubel.png">
     <p>
-      Pour accéder à ton espace client, connecte-toi via : <%= @url %>.
+      Il y a maintenant  <strong><%= @attendance.attendees.size %></strong> utilisateurs inscrits à ton super évènement ! <br/><br/>Espérons que ce soit le début d'une longue série, car comme le dit souvent notre chère <strong style="font-style: italic">Dr. Lachatte</strong>, plus on est de fous, plus le jus de pamplemousse a bon goût !
     </p>
-    <p> À très vite sur le-choix-dans-la-date.org !
+    <hr>
+    <blockquote> À très vite sur le-choix-dans-la-date.org ! <br/> <br/>
+    - <span style="font-style: italic">The <span style="color: red">S</span>uper <span style="color: red">F</span>uck <span style="color: red">F</span>riends </span></blockquote>
+    <hr>
+    <img src="https://scontent-amt2-1.cdninstagram.com/vp/9162199682530d6ba7df896391c06fbd/5CE04970/t51.2885-15/e35/43371552_345243769354400_135114894105553554_n.jpg?_nc_ht=scontent-amt2-1.cdninstagram.com">
   </body>
 </html>

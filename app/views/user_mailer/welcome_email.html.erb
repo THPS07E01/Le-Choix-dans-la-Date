@@ -4,13 +4,25 @@
     <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
   </head>
   <body>
-    <h1>Salut <%= @user.first_name %> et bienvenue chez nous !</h1>
-    <p>
-      Tu t'es inscrit sur le-choix-dans-la-date.org en utilisant l'e-mail suivant : <%= @user.email %>.
-    </p>
+    <h1>Salut <%= @user.first_name %>, bienvenue parmi les <span style="color: red; font-style: italic">SFF</span> !</h1>
+    <hr/>
+    <h3>
+      Tu t'es inscrit sur <span style="color: red; font-style: italic">le-choix-dans-la-date</span>.org en utilisant l'e-mail suivant : <%= @user.email %>.
+    </h3>
+    <p> Ici tu vas pouvoir te faire <strong>plaisir</strong> ! </p>
+    <p> - Les limites ? </p>
+    <ul>
+      <li> Ton imagination </li>
+      <li> Les gens qui voudront participer ou <strong>pas</strong> à tes évènements farfelus.  </li>
+      <li> Les fonctionnalités de notre site <img src="https://media1.tenor.com/images/1f8794a59ab6a045a2d2ccb4be8d01b8/tenor.gif?itemid=6125776" > </li>
+    </ul>
     <p>
       Pour accéder à ton espace client, connecte-toi via : <%= @url %>.
     </p>
-    <p> À très vite sur le-choix-dans-la-date.org !
+    <blockquote> À très vite sur le-choix-dans-la-date.org ! <br/> <br/>
+    - <span style="font-style: italic">The <span style="color: red">S</span>uper <span style="color: red">F</span>uck <span style="color: red">F</span>riends </span></blockquote>
+    <hr>
+    <img src="https://scontent-ams3-1.cdninstagram.com/vp/8f9adf042bd7ed9d05a9666fd3be1725/5CE3A303/t51.2885-15/sh0.08/e35/s640x640/43371552_345243769354400_135114894105553554_n.jpg?_nc_ht=scontent-ams3-1.cdninstagram.com">
   </body>
 </html>
+<hr>
