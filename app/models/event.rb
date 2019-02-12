@@ -1,18 +1,16 @@
 class Event < ApplicationRecord
-	belongs_to :admin, class_name: "User", foreign_key: "admin_id"
+	belongs_to :admin, foreign_key: "admin_id", class_name: "User"
 	has_many :attendances
 	has_many :attendees, class_name: "User", through: :attendances, foreign_key: "attendee_id"
 
 	validates :start_date,
 		presence: { message: "Tu as oublié la date de l'évènement !" }
-
-	validate :start_date_cannot_be_in_the_past
+		validate :start_date_cannot_be_in_the_past
 
 	validates :duration,
 		presence: { message: "Tu as oublié la durée de l'évènement !" },
 		numericality: { only_integer: true }
-
-	validate :duration_multiple_of_5
+		validate :duration_multiple_of_5
 
 	validates :title,
 		presence: { message: "Tu as oublié le titre de l'évènement !" },
@@ -30,14 +28,10 @@ class Event < ApplicationRecord
 		presence: { message: "Tu as oublié le lieu de l'évènement !" }
 
 	def start_date_cannot_be_in_the_past
-		if start_date < Time.now
-			errors.add(:start_date, "T'es pas Marty McFly, tu peux pas allez dans le passé bro !")
-		end
+		errors.add(:start_date, "T'es pas Marty McFly, tu peux pas allez dans le passé bro !") if start_date < Time.now
 	end
 
 	def duration_multiple_of_5
-		if duration % 5 != 0 && duration > 0
-			errors.add(:duration, "Un multiple de 5 et on balance ton event dans les bacs !")
-		end
+		errors.add(:duration, "Un multiple de 5 et on balance ton event dans les bacs !") if duration % 5 != 0 && duration > 0
   end
 end
