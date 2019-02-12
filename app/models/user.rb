@@ -12,10 +12,6 @@ class User < ApplicationRecord
 	validates :last_name,
 		presence: { message: "Tu as oublié de renseigner ton nom !" }
 
-	validates :email,
-		presence: { message: "Tu as oublié de renseigner ton email !" },
-		uniqueness: { message: "Cet email est déjà pris !" },
-   	format: { with: /\A[^@\s]+@([^@\s]+\.)+[^@\s]+\z/, message: "Il te faut une adresse email valide !" }
 
   def welcome_send
     UserMailer.welcome_email(self).deliver_now
