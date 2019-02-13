@@ -28,10 +28,18 @@ class Event < ApplicationRecord
 		presence: { message: "Tu as oublié le lieu de l'évènement !" }
 
 	def start_date_cannot_be_in_the_past
-		errors.add(:start_date, "T'es pas Marty McFly, tu peux pas allez dans le passé bro !") if start_date < Time.now
+		if start_date != nil
+			if start_date < Time.now
+				errors.add(:start_date, "T'es pas Marty McFly, tu peux pas allez dans le passé bro !")
+			end
+		end
 	end
 
 	def duration_multiple_of_5
-		errors.add(:duration, "Un multiple de 5 et on balance ton event dans les bacs !") if duration % 5 != 0 && duration > 0
+		if duration != nil
+			if duration % 5 != 0 && duration > 0
+				errors.add(:duration, "Un multiple de 5 et on balance ton event dans les bacs !")
+			end
+		end
   end
 end

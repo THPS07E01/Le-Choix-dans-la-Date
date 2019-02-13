@@ -1,14 +1,6 @@
-<p id="notice"><%= notice %></p>
+<h1 class="text-center mt-5">Nos Evènements </h1>
 
-<h1 class="d-flex justify-content-center">Nos Evènements </h1>
 <hr/>
-
-
-
-<br>
-
-
-
 
 <% @events.each do |event| %>
 
@@ -16,10 +8,10 @@
   <div class="card-media">
     <!-- media container -->
     <div class="card-media-object-container">
-      <div class="card-media-object" style="background-image: url(https://www.karmel.com/images/site/sporting-concert-events.png);"></div>
+      <div class="card-media-object" style="background-image: url(https://picsum.photos/800/600?image=<%= 190 + event.id %>);"></div>
       <ul class="card-media-object-social-list">
         <li>
-          <img src="https://s13.postimg.cc/c5aoiq1w7/stock3_f.jpg" class="">
+          <img src="http://lorempixel.com/50/50/people/<%= event.id %>" class="">
         </li>
       </ul>
     </div>
@@ -50,6 +42,5 @@
       </div>
     </div>
   </div>
-
 </div>
 <% end %>

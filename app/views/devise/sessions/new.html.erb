@@ -1,4 +1,4 @@
-<h2>Log in</h2>
+<h2 class="d-flex justify-content-center mt-5">Connexion</h2>
 
 <div class="container-fluid mt-5">
   <div class="row no-gutter d-flex justify-content-center">
@@ -8,7 +8,7 @@
         <div class="container">
           <div class="row">
             <div class="col-md-9 col-lg-8 mx-auto">
-              <h3 class="login-heading mb-4">Welcome back!</h3>
+              <h3 class="login-heading mb-4">Bon retour !</h3>
               <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
                 <div class="field">
                   <%= f.label :email %><br />
@@ -28,7 +28,7 @@
                 <% end %>
 
                 <div class="actions">
-                  <%= f.submit "Log in" %>
+                  <%= f.submit "Se connecter" %>
                 </div>
               <% end %>
 
@@ -47,4 +47,3 @@
   background-size: cover;
   background-position: center;
 }
-</style>
