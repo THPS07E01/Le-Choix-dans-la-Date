@@ -5,7 +5,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
   has_many :attendances
 	has_many :events, foreign_key: "attendee_id", through: :attendances
-	has_many :organized_events, foreign_key: 'admin_id', class_name: "Event"
+	has_many :organized_events, foreign_key: 'admin_id', class_name: "Event", dependent: :destroy
  	has_many :attented_events, foreign_key: 'attendee_id', class_name: "Event"
   after_create :welcome_send
 

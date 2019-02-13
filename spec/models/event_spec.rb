@@ -17,6 +17,7 @@ RSpec.describe Event, type: :model do
     it "#start_date" do
       expect @event.start_date.class == Date
       expect @event.start_date > Time.now
+      expect(@event).to_not allow_value(nil).for(:start_date)
     end
     it "#duration" do
       expect @event.duration.class == Integer
@@ -26,6 +27,7 @@ RSpec.describe Event, type: :model do
       expect(@event).to_not allow_value(5.5).for(:duration)
       expect(@event).to_not allow_value(-5).for(:duration)
       expect(@event).to_not allow_value(0).for(:duration)
+      expect(@event).to_not allow_value(nil).for(:duration)
     end
     it "#title" do
       expect @event.title.class == String

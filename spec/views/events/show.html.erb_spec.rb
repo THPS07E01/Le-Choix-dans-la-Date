@@ -10,12 +10,12 @@ RSpec.describe "events/show.html.erb", type: :view do
     expect(build(:event)).to be_valid
   end
 
-  it "show valid content" do
-    id = @event.id
-    render "events/id", :id => id
-
-    rendered.should contain("Title")
-  end
+  # it "show valid content" do
+  #   id = @event.id
+  #   render "events/id", :id => id
+  #
+  #   rendered.should contain("Title")
+  # end
 
   # it "displays the correct page for a event" do
   #   controller.extra_params = { :id => @event.id }
