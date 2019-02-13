@@ -5,40 +5,52 @@ ActiveRecord::Base.connection.reset_pk_sequence!('users')
 ActiveRecord::Base.connection.reset_pk_sequence!('events')
 ActiveRecord::Base.connection.reset_pk_sequence!('attendances')
 
-# 30.times do |i|
-# 	user = User.create!(email: Faker::Internet.email, first_name: Faker::Internet.username, last_name: Faker::LeagueOfLegends.champion, description: Faker::LeagueOfLegends.quote, encrypted_password: Faker::Space.agency)
-# 	i += 1
-# 	puts "#{i}.#{user.first_name}"
+30.times do |i|
+	user = User.create!(
+		first_name: Faker::Internet.username,
+		last_name: Faker::LeagueOfLegends.champion,
+		description: Faker::LeagueOfLegends.quote,
+		email: Faker::Internet.email,
+		password: Faker::Space.agency)
+	print '.'
+end
+puts '=== User DB created ==='
+
+10.times do |j|
+	event = Event.create!(
+		admin_id: User.all.sample.id,
+		title: Faker::Music.instrument + Faker::Music.instrument,
+		description: Faker::HitchhikersGuideToTheGalaxy.quote + Faker::MostInterestingManInTheWorld.quote,
+		start_date: Faker::Date.forward(rand(1..666)),
+		duration: j * 5,
+		price: rand(1..1000),
+		location: Faker::LeagueOfLegends.location)
+	print '.'
+end
+puts '=== Event DB created ==='
+
+30.times do |k|
+	attendance = Attendance.create!(
+		attendee_id: User.all.sample.id,
+		event_id: Event.all.sample.id,
+		stripe_customer_id: Faker::Business.credit_card_number)
+	print '.'
+end
+puts '=== Attendance DB created ==='
+
+# 3.times do |l|
+# 	user = User.create!(email: "peepoodo#{l}@yopmail.com", first_name: Faker::Internet.username, last_name: Faker::LeagueOfLegends.champion, description: Faker::LeagueOfLegends.quote, encrypted_password: Faker::Space.agency)
+# 	l += 1
 # end
-# puts '=== User DB created ==='
 #
-# 10.times do |j|
-# 	event = Event.create!(admin_id: User.all.sample.id, start_date: Faker::Date.forward(rand(1..666)), duration: j * 5, title: Faker::Music.instrument + Faker::Music.instrument, description: Faker::HitchhikersGuideToTheGalaxy.quote + Faker::MostInterestingManInTheWorld.quote, price: rand(1..1000), location: Faker::LeagueOfLegends.location)
-# 	j += 1
-# 	puts "#{j}.#{event.title}"
+# 1.times do |m|
+# 	event = Event.create!(admin_id: 1, start_date: Faker::Date.forward(rand(1..666)), duration: 50, title: Faker::Music.instrument + Faker::Music.instrument, description: Faker::HitchhikersGuideToTheGalaxy.quote + Faker::MostInterestingManInTheWorld.quote, price: rand(1..1000), location: Faker::LeagueOfLegends.location)
 # end
-# puts '=== Event DB created ==='
 #
-# 30.times do |k|
-# 	attendance = Attendance.create!(attendee_id: User.all.sample.id, event_id: Event.all.sample.id, stripe_customer_id: Faker::Business.credit_card_number)
-# 	k += 1
-# 	puts "#{k}.#{attendance.stripe_customer_id}"
+# 2.times do |n|
+# 	attendance = Attendance.create!(attendee_id: n + 1, event_id: 1, stripe_customer_id: Faker::Business.credit_card_number)
+# 	n += 1
 # end
-# puts '=== Attendance DB created ==='
-
-3.times do |l|
-	user = User.create!(email: "peepoodo#{l}@yopmail.com", first_name: Faker::Internet.username, last_name: Faker::LeagueOfLegends.champion, description: Faker::LeagueOfLegends.quote, encrypted_password: Faker::Space.agency)
-	l += 1
-end
-
-1.times do |m|
-	event = Event.create!(admin_id: 1, start_date: Faker::Date.forward(rand(1..666)), duration: 50, title: Faker::Music.instrument + Faker::Music.instrument, description: Faker::HitchhikersGuideToTheGalaxy.quote + Faker::MostInterestingManInTheWorld.quote, price: rand(1..1000), location: Faker::LeagueOfLegends.location)
-end
-
-2.times do |n|
-	attendance = Attendance.create!(attendee_id: n + 1, event_id: 1, stripe_customer_id: Faker::Business.credit_card_number)
-	n += 1
-end
 
 puts ''
 puts "TTTTTTTTTTTTTTTTTTTTTTThhhhhhh"

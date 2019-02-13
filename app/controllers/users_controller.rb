@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!
+  before_action :user_to_show_is_current_user, except: [:index]
 
   # GET /users
   # GET /users.json
@@ -71,5 +72,18 @@ class UsersController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def user_params
       params.require(:user).permit(:first_name, :last_name, :description, :email, :encrypted_password)
+    end
+
+    def user_to_show_is_current_user
+      puts '$' * 50
+      puts params[:id]
+      puts current_user.id
+      puts '$' * 50
+      if params[:id] == current_user.id
+        puts 'LA BOUCLE FONCTIONNE BIEN'
+      else
+        puts 'LA BOUCLE FONCTIONNE PAS'
+        redirect_to users_path, notice: 'Accès non autorisé'
+      end
     end
 end

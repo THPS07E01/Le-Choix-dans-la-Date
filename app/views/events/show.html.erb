@@ -11,6 +11,11 @@
 </p>
 
 <p>
+  <strong>End date:</strong>
+  <%= @end_date %>
+</p>
+
+<p>
   <strong>Title:</strong>
   <%= @event.title %>
 </p>
@@ -21,6 +26,11 @@
 </p>
 
 <p>
+  <strong>Admin:</strong>
+  <%= @event.admin.email %>
+</p>
+
+<p>
   <strong>Price:</strong>
   <%= @event.price %>
 </p>
@@ -28,6 +38,14 @@
 <p>
   <strong>Location:</strong>
   <%= @event.location %>
+</p>
+
+<p>
+  <strong>Attendees:</strong>
+  <%= @event.attendees.count %><br>
+  <% @event.attendees.each do |attendee| %>
+    <%= attendee.first_name + ' ' + attendee.last_name %><br>
+  <% end %>
 </p>
 
 <%= link_to 'Edit', edit_event_path(@event) %> |
