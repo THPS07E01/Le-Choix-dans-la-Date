@@ -15,6 +15,10 @@ class User < ApplicationRecord
 	validates :last_name,
 		presence: { message: "Tu as oublié de renseigner ton nom !" }
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> master
   def welcome_send
     UserMailer.welcome_email(self).deliver_now
   end
