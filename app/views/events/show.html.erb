@@ -26,7 +26,7 @@
   <%= @event.price %>€
 </p>
 
-<p class="d-flex justify-content-end text-capitalize mr-2">
+<p class="d-flex justify-content-end mr-2">
   by - <%= @event.admin.email %>
 </p>
 
@@ -60,11 +60,20 @@
 </p>
 <div class="d-flex justify-content-center mb-4">
  <a  class="btn btn-primary mr-2" href="<%= edit_event_path(@event) %>" >Editer</a>
-<a  class="btn btn-primary mr-2" href="<%= @event %>" data-method="DELETE" data-confirm="Tourne 7 fois ta langue dans ta bouche... Tu es certain ?">Supprimer l'évènement</a>
+<a  class="btn btn-danger mr-2" href="<%= @event %>" data-method="DELETE" data-confirm="Tourne 7 fois ta langue dans ta bouche... Tu es certain ?">Supprimer l'évènement</a>
 <a  class="btn btn-primary" href="<%= events_path %>" >Retour</a>
 </div>
 <% else %>
-<div class="d-flex justify-content-center mb-4">
-<a  class=" btn btn-primary" href="<%= events_path %>" >Retour</a>
-</div>
+
+  <% if Event.find(params[:id]).attendees.include? current_user %>
+    <div class="d-flex justify-content-center mb-4">
+      <button type="button" class="btn btn-success" disabled><i class="fas fa-check mr-2"></i>Tu as déjà rejoint cet évènement</button>
+      <a  class=" btn btn-primary ml-3" href="<%= events_path %>" >Retour</a>
+    </div>
+  <% else %>
+    <div class="d-flex justify-content-center mb-4">
+      <a class="btn btn-primary mr-2" href="<%= new_charge_path(params[:id]) %>">Rejoindre l'event</a>
+      <a  class=" btn btn-primary" href="<%= events_path %>" >Retour</a>
+    </div>
+  <% end %>
 <% end %>
