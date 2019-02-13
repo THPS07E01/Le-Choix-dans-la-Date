@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!
-  before_action :user_to_show_is_current_user, except: [:index]
+  before_action :user_to_show_is_current_user?, except: [:index]
 
   # GET /users
   # GET /users.json
@@ -74,7 +74,7 @@ class UsersController < ApplicationController
       params.require(:user).permit(:first_name, :last_name, :description, :email, :encrypted_password)
     end
 
-    def user_to_show_is_current_user
+    def user_to_show_is_current_user?
       if params[:id].to_i == current_user.id
       else
         redirect_to users_path, notice: 'Accès non autorisé'
