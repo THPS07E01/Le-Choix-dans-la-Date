@@ -39,10 +39,3 @@ group :test do
 end
 
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
-<<<<<<< HEAD
-=======
-gem 'dotenv-rails'
-gem 'table_print'
-gem 'faker'
-
->>>>>>> master

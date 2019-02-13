@@ -75,14 +75,8 @@ class UsersController < ApplicationController
     end
 
     def user_to_show_is_current_user
-      puts '$' * 50
-      puts params[:id]
-      puts current_user.id
-      puts '$' * 50
-      if params[:id] == current_user.id
-        puts 'LA BOUCLE FONCTIONNE BIEN'
+      if params[:id].to_i == current_user.id
       else
-        puts 'LA BOUCLE FONCTIONNE PAS'
         redirect_to users_path, notice: 'Accès non autorisé'
       end
     end
