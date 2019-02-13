@@ -5,7 +5,7 @@ ActiveRecord::Base.connection.reset_pk_sequence!('users')
 ActiveRecord::Base.connection.reset_pk_sequence!('events')
 ActiveRecord::Base.connection.reset_pk_sequence!('attendances')
 
-30.times do |i|
+15.times do |i|
 	user = User.create!(
 		first_name: Faker::Internet.username,
 		last_name: Faker::LeagueOfLegends.champion,
@@ -17,6 +17,7 @@ end
 puts '=== User DB created ==='
 
 10.times do |j|
+	j += 1
 	event = Event.create!(
 		admin_id: User.all.sample.id,
 		title: Faker::Music.instrument + Faker::Music.instrument,

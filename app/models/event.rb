@@ -9,7 +9,7 @@ class Event < ApplicationRecord
 
 	validates :duration,
 		presence: { message: "Tu as oublié la durée de l'évènement !" },
-		numericality: { only_integer: true }
+		numericality: { only_integer: true, greater_than: 0 }
 		validate :duration_multiple_of_5
 
 	validates :title,
