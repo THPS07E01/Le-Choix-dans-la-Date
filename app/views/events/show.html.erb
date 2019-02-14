@@ -1,15 +1,18 @@
 <div class="container">
   <h2 class="text-center text-secondary font-italic mt-5"><strong><%= @event.title %></strong></h2>
   <hr/>
-  <div class="d-flex justify-content-center">
-    <img class="w-25" src="https://picsum.photos/800/600?image=<%= 190 + @event.id %>">
+  
+  <div class="d-flex justify-content-center w-25">
+    <img class="" src="https://picsum.photos/800/600?image=<%= 190 + @event.id %>">
   </div>
-
+  <div>
   <p><strong class="text-primary mt-4">Description:</strong><br><%= @event.description %></p>
 
   <p><strong class="text-primary mt-4">Lieu:</strong><%= @event.location %></p>
 
   <p><strong class="text-primary">Prix:</strong><%= @event.price %>€</p>
+  </div>
+
 
   <p class="d-flex justify-content-end align-items-center mr-2 text-secondary">
     <span class="text-primary text-capitalize mr-1">Organisé</span><span class="text-primary mr-1">par</span>
