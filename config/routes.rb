@@ -4,4 +4,5 @@ Rails.application.routes.draw do
   resources :events
   resources :users, only: [:index, :show, :edit, :update, :destroy]
   resources :charges
+  resources :teams, only: [:index]
 end
