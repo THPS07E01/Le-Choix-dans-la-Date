@@ -13,8 +13,8 @@
 
   <p class="d-flex justify-content-end align-items-center mr-2 text-secondary">
     <span class="text-primary text-capitalize mr-1">Organisé</span><span class="text-primary mr-1">par</span>
-    <span class="text-capitalize"><%= @event.admin.email %></span>
-    <img src="http://lorempixel.com/50/50/people/<%= @event.id %>"
+    <span class=""><%= @event.admin.email %></span>
+    <img src="http://lorempixel.com/50/50/people/<%= @event.id %>" class="ml-2">
   </p>
 
   <table id="test" class="table table-striped table-hover ">
@@ -47,12 +47,20 @@
   </p>
   <div class="d-flex justify-content-center mb-4">
     <a  class="btn btn-primary mr-2" href="<%= edit_event_path(@event) %>" >Editer</a>
-    <a  class="btn btn-primary mr-2" href="<%= @event %>" data-method="DELETE" data-confirm="Tourne 7 fois ta langue dans ta bouche... Tu es certain ?">Supprimer l'évènement</a>
+    <a  class="btn btn-danger mr-2" href="<%= @event %>" data-method="DELETE" data-confirm="Tourne 7 fois ta langue dans ta bouche... Tu es certain ?">Supprimer l'évènement</a>
     <a  class="btn btn-primary" href="<%= events_path %>" >Retour</a>
   </div>
   <% else %>
-  <div class="d-flex justify-content-center mb-4">
-    <a  class=" btn btn-primary" href="<%= events_path %>" >Retour</a>
-  </div>
+    <% if Event.find(params[:id]).attendees.include? current_user %>
+      <div class="d-flex justify-content-center mb-4">
+        <button type="button" class="btn btn-success" disabled><i class="fas fa-check mr-2"></i>Tu as déjà rejoint cet évènement</button>
+        <a  class=" btn btn-primary ml-3" href="<%= events_path %>" >Retour</a>
+      </div>
+    <% else %>
+      <div class="d-flex justify-content-center mb-4">
+        <a class="btn btn-primary mr-2" href="<%= new_charge_path(params[:id]) %>">Rejoindre l'event</a>
+        <a  class=" btn btn-primary" href="<%= events_path %>" >Retour</a>
+      </div>
+    <% end %>
   <% end %>
 </div>
